@@ -1,0 +1,25 @@
+{
+  "name": "bb-plugin-duo-layout",
+  "version": "0.4.0",
+  "type": "module",
+  "author": "mprilepov",
+  "engines": {
+    "bb": ">=0.46",
+    "bbPluginSdk": ">=0.6.37"
+  },
+  "bb": {
+    "name": "Duo Layout",
+    "description": "bb на iPhone Duo во всех четырёх положениях: кнопки под большой палец у края экрана, пропорции как в новом Telegram, «назад» с числом непрочитанных. На маке вид не меняется.",
+    "branding": {
+      "icon": "TabletSmartphone"
+    },
+    "server": "./server.ts",
+    "app": "./app.ts",
+    "skills": []
+  },
+  "devDependencies": {
+    "@get-bb/plugin-sdk": "0.6.49",
+    "@types/node": "^22.0.0",
+    "typescript": "^5.7.0"
+  }
+}
