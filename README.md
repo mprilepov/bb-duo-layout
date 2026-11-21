@@ -6,6 +6,8 @@
 
 Лицензия MIT, текст в [LICENSE](LICENSE).
 
+![bb на iPhone Duo во всех четырёх положениях](screenshots/overview.png)
+
 ## Что в каждом положении
 
 | Положение | Как выглядит |
@@ -23,6 +25,18 @@
 
 На кнопке «назад» видно число непрочитанных чатов, если в списке bb есть блок «Непрочитанные · N».
 Его рисует отдельный плагин списка чатов. Без него кнопка просто без числа.
+
+## Как выглядит
+
+| Раскрыт горизонтально | Раскрыт вертикально |
+|---|---|
+| <img src="screenshots/open-landscape.png" width="420"> | <img src="screenshots/open-upright.png" width="300"> |
+
+| Закрыт: чат | Закрыт: список чатов | Закрыт, боком |
+|---|---|---|
+| <img src="screenshots/closed.png" width="220"> | <img src="screenshots/closed-list.png" width="220"> | <img src="screenshots/closed-sideways.png" width="320"> |
+
+На снимках вместо настоящих чатов — пример.
 
 ## Установка
 
