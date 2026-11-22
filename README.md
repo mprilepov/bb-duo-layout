@@ -43,7 +43,7 @@
 На маке, где запущен bb, в терминале:
 
 ```sh
-bb plugin install git:https://github.com/mprilepov/bb-duo-layout@v0.4.0 --yes
+bb plugin install git:https://github.com/mprilepov/bb-duo-layout@v0.4.1 --yes
 ```
 
 Потом закройте и откройте bb на телефоне.

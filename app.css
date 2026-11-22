@@ -936,22 +936,42 @@ html[data-duo-compact][data-duo-strip] {
   --duo-strip-top: 180px;
 }
 
-/* The content stays beside the strip, never under the clock or the camera. */
+/*
+ * The content stays beside the strip and reaches a little into it, up to 8pt
+ * short of the round buttons (Михаил 22.11: «максимально близко к панели»):
+ * 91pt strip, 48pt circles in its middle → about 13pt of it go to the text.
+ */
+html[data-duo-compact] {
+  --duo-strip-reach: max(0px, calc((var(--duo-strip) - var(--duo-orb, 48px)) / 2 - 8px));
+  --duo-content-room: calc(100vw - var(--duo-strip) + var(--duo-strip-reach));
+}
+
 html[data-duo-compact] [data-testid="app-layout-root"] {
-  width: calc(100% - var(--duo-strip)) !important;
+  width: var(--duo-content-room) !important;
 }
 
 html[data-duo-compact][data-duo-strip-left] [data-testid="app-layout-root"] {
-  margin-left: var(--duo-strip);
+  margin-left: calc(var(--duo-strip) - var(--duo-strip-reach));
+}
+
+/*
+ * bb now pads its own panes by env(safe-area-inset-*) too, once the app's
+ * WebView reports the strip there. The room above already leaves the strip out,
+ * so that second padding only doubled the empty band (91pt on the closed Duo).
+ */
+html[data-duo-compact] [data-testid="app-layout-root"] :is([data-app-content-shell], [data-sidebar="sidebar"]),
+html[data-duo-compact] [role="dialog"][data-side="left"] [data-sidebar="sidebar"] {
+  padding-right: 0 !important;
+  padding-left: 0 !important;
 }
 
 html[data-duo-compact] div:has(> [role="dialog"][data-side="left"]) {
   /* bb's phone list is min(86vw, 360px), set inline; here it fills the room beside the strip */
-  --sidebar-width-mobile: calc(100vw - var(--duo-strip)) !important;
+  --sidebar-width-mobile: var(--duo-content-room) !important;
 }
 
 html[data-duo-compact] [role="dialog"][data-side="left"] {
-  width: calc(100vw - var(--duo-strip)) !important;
+  width: var(--duo-content-room) !important;
   max-width: none !important;
 }
 
@@ -973,7 +993,7 @@ html[data-duo-compact][data-duo-list] [data-duo-dock] > div[data-duo-dock-group=
 }
 
 html[data-duo-compact][data-duo-strip-left] [role="dialog"][data-side="left"] {
-  left: var(--duo-strip) !important;
+  left: calc(var(--duo-strip) - var(--duo-strip-reach)) !important;
 }
 
 /* The list's icon rail goes, as in the open strip: its places are in the dock and More. */
